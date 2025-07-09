@@ -188,11 +188,11 @@
         method: 'GET',
         success: function (data) {
           $('#pais').empty();
-          $('#pais').append('<option value="">Seleccione País</option>');
+          $('#pais').append('<option value=\"\">Seleccione País</option>');
           data.forEach(function (p) {
-            const nombre = p.name.common;
-            const oficial = p.name.official;
-            $('#pais').append(`<option value="${nombre}" data-oficial="${oficial}">${nombre}</option>`);
+            const nombre = p.name.nativeName?.spa?.common || p.name.common;
+            const oficial = p.name.nativeName?.spa?.official || p.name.official;
+            $('#pais').append(`<option value="${nombre}" data-oficial=\"${oficial}\">${nombre}</option>`);
           });
         },
         error: function () {
